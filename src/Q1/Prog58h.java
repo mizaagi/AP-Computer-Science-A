@@ -5,15 +5,15 @@ public class Prog58h {
     public static void main(String[] args) {
             Scanner input = new Scanner(System.in);
             System.out.println("P: ");
-            int P = input.nextInt();
+            double P = input.nextDouble();
             System.out.println("r: ");
-            int r = input.nextInt();
+            double r = input.nextDouble();
             System.out.println("n: ");
-            int n = input.nextInt();
+            double n = input.nextDouble();
             System.out.println("t: ");
-            int t = input.nextInt();
-
-            int A = P * ((1 + Math.pow(((0.01*r)/n), (n*t)/365)));
-            System.out.println("A = ", A);
+            double t = input.nextDouble();
+            System.out.println(Math.pow(((0.01*r)/n), (n*t)/365));
+            double A = P * (Math.pow((1 + (0.01*r)/n), (n*t)/365));
+            System.out.println("A = " + A);
     }
 }
