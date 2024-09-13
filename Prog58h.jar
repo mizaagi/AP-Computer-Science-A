@@ -1,0 +1,16 @@
+import java.util.*
+
+public static void main(String[] args) {
+	System.out.println("enter cost:");
+	Scanner input = new Scanner(System.in);
+	double cost = input.nextDouble();
+	System.out.println("enter amount received:");
+	double received = input.nextDouble();
+	
+	double totalCost = received - cost;
+	int dollars = 0;
+	int quarters = 0;
+	int dimes = 0;
+	int nickels = 0;
+	int pennies = 0;
+	while (
