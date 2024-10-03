@@ -12,7 +12,7 @@ public class StrInt6 {
         boolean unique = true;
         for (int lcv = 0; lcv < text.length(); lcv++) {
             unique = true;
-            for (int lcv2 = lcv2+1; lcv2 < text.length(); lcv2++) {
+            for (int lcv2 = lcv+1; lcv2 < text.length(); lcv2++) {
                 if (text.charAt(lcv) == (text.charAt(lcv2))) {
                     unique = false;
                 }
