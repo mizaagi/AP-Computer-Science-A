@@ -27,7 +27,7 @@ public class Cl88a {
         sum = num1 + num2;
         dif = num1 - num2;
         prod = num1 * num2;
-        dist = abs(num1 - num2);
+        dist = Math.abs(num1 - num2);
         avg = sum/2.0;
         if (num1 >= num2) {
             max = num1;

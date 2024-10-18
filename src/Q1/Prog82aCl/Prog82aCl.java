@@ -1,4 +1,4 @@
-package Q1.PRog82aCl;
+package Q1.Prog82aCl;
 import java.util.Scanner;
 
 public class Prog82aCl {
