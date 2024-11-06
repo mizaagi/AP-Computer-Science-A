@@ -8,6 +8,7 @@ public class Cl93a {
     private double total;
     private double lateTotal;
 
+
     public Cl93a(int kwh) {
         this.kwh = kwh;
         baseRate = 0;
