@@ -10,11 +10,13 @@ public class Prog214b {
             Scanner file = new Scanner(new File("Langdat/prog214b.dat"));
 
             while (file.hasNext()) {
-                int empNum      = file.nextInt();
-                float ytdPay    = file.nextFloat();
-                float bpRate    = file.nextFloat();
-                float sCode     = file.nextFloat();
-                float hrsWorked = file.nextFloat();
+                int empNum       = file.nextInt();
+                double ytdPay    = file.nextDouble();
+                double bpRate    = file.nextDouble();
+                double sCode     = file.nextDouble();
+                double hrsWorked = file.nextDouble();
+
+
             }
         } catch (IOException e) {
             System.out.println("Error: " + e);
