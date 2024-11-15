@@ -47,16 +47,16 @@ public class Cl214b {
             FICA = 0.0605 * grossPay;
         else if (ytdPay < 17300 && ytdPay+grossPay > 17300)
             FICA = 0.0605 * (17300 - (ytdPay+grossPay));
-        netPay = grossPay - FICA - withTax;
+        netPay = grossPay - Math.abs(FICA) - withTax;
 
     }
 
     public String toString() {
         return "Employee Number: " + empNum +
-                "\nHours: " + hrsWorked + " | Rate: " + payRate + " | Shift Factor: " + sCode +
+                "\nHours: " + hrsWorked + " | Rate: " + bpRate + " | Shift Factor: " + sCode +
                 "\n\tCurrent\tYear-to-date\nGross Pay: " + grossPay + "\t" + ytdPay +
                 "\nWithholding: " + withTax +
-                "\nFICA: " + FICA +
+                "\nFICA: " + Math.abs(FICA) +
                 "\nNet Pay: " + netPay + "\n";
     }
 }
