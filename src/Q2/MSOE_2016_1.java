@@ -4,13 +4,11 @@ import java.util.Scanner;
 public class MSOE_2016_1 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter a: ");
-        double a = input.nextDouble();
-        System.out.println("Enter c: ");
-        double c = input.nextDouble();
-        System.out.println("Enter angle a: ");
-        double A = input.nextDouble();
-        double cC;
-        double o = (Math.sin(A) / a) * c;
+        String word = input.next();
+        String reversedWord = "";
+        for (int i = word.length(); i > 0; i--) {
+            reversedWord += word.substring(i-1, i);
+        }
+        System.out.println("Is the word a palindrome? " + (word.equals(reversedWord)));
     }
 }
