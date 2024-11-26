@@ -37,5 +37,9 @@ public class ClLP3_10 {
 
     public String getChangeString() {
         return "Your change is " + change;
-    } 
+    }
+
+    public double getFintot() {
+        return fintot;
+    }
 }

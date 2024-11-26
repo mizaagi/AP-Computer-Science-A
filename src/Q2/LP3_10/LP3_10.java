@@ -18,7 +18,7 @@ public class LP3_10 {
         System.out.println(transaction);
         System.out.print("Enter amount tendered: ");
         t = input.nextDouble();
-        transaction.calc_tender(t);
+        transaction.calc_tender(t, transaction.getFintot());
         System.out.println(transaction.getChangeString());
     }
 }
