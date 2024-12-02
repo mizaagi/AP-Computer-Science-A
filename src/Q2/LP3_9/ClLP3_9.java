@@ -23,10 +23,15 @@ public class ClLP3_9 {
     }
 
     public void calc() {
-        this.days = Math.abs((year-bYear-1) * 365) + Math.abs((month-bMonth-1) * 30) + Math.abs(day-bDay);
+        days = //((year - bYear) * 30) + ((month - bMonth)*30) + (day - bDay);
+        Math.abs((year-bYear) * 365) + (Math.abs((month - bMonth)*30) - Math.abs(day - bDay));
+        slpHrs = days * 8;
     }
 
     public String getDays() {
-        return days + " days";
+        return "You have been alive " + days + " days";
+    }
+    public String getHours() {
+        return "You have slept " + slpHrs + " hours";
     }
 }
