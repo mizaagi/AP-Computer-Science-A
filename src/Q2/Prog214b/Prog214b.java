@@ -15,7 +15,7 @@ public class Prog214b {
                 double bpRate    = file.nextDouble();
                 double sCode     = file.nextDouble();
                 double hrsWorked = file.nextDouble();
-                Cl214b employee = new Cl214b(empNum, ytdPay, bpRate, sCode, hrsWorked);
+                Cl214b employee  = new Cl214b(empNum, ytdPay, bpRate, sCode, hrsWorked);
                 employee.calc();
                 System.out.println(employee);
             }
