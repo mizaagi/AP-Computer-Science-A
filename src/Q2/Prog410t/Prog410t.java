@@ -7,8 +7,12 @@ public class Prog410t {
     public static void main(String[] args) {
         try {
             Scanner file = new Scanner(new File("Langdat/survey.dat"));
-
-            Cl410t[] households = new Cl410t[];
+            int lines = 0;
+            while (file.hasNextLine()) {
+                lines++;
+                file.nextLine();
+            }
+            Cl410t[] households = new Cl410t[lines];
             int count = 0;
             int pov = 0;
             while (file.hasNext()) {
