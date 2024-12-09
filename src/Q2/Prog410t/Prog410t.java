@@ -8,7 +8,7 @@ public class Prog410t {
         try {
             Scanner file = new Scanner(new File("Langdat/survey.dat"));
 
-            Cl410t[] households = new Cl410t[];
+            Cl410t[] households = new Cl410t[25];
             int count = 0;
             int pov = 0;
             while (file.hasNext()) {
@@ -27,7 +27,8 @@ public class Prog410t {
             double percent = pov / 25.0;
             System.out.println("id\t\tincome\tmembers");
             for (Cl410t x : households) {
-                System.out.println(x);
+                if (x != NullType) // whatever
+                    System.out.println(x);
             }
 
         } catch (IOException e) {
