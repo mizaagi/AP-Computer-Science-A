@@ -20,14 +20,15 @@ public class Prog410t {
                 count++;
             }
             for (Cl410t x : households) {
-                if (x.getIncome() < 3750 + (750 * (x.getMembers()-2))) {
-                    pov++;
-                }
+                if (x != null)
+                    if (x.getIncome() < 3750 + (750 * (x.getMembers()-2))) {
+                        pov++;
+                    }
             }
             double percent = pov / 25.0;
             System.out.println("id\t\tincome\tmembers");
             for (Cl410t x : households) {
-                if (x != NullType) // whatever
+                if (x != null) // whatever
                     System.out.println(x);
             }
 

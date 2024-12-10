@@ -20,6 +20,6 @@ public class Cl410t {
     }
 
     public String toString() {
-        return id + "\t\t" + income + "\t" + members;
+        return id + "\t" + income + "\t" + members;
     }
 }
