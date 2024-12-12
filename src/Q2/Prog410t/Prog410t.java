@@ -6,11 +6,11 @@ import java.io.IOException;
 public class Prog410t {
     public static void main(String[] args) {
         try {
-            Scanner file = new Scanner(new File("Langdat/survey.dat"));
+            Scanner file = new Scanner(new File("Langdat/survey2.dat"));
 
             Cl410t[] households = new Cl410t[25];
             int count = 0;
-            int pov = 0;
+            double pov = 0.0;
             while (file.hasNext()) {
                 int id      = file.nextInt();
                 int income  = file.nextInt();
@@ -25,12 +25,14 @@ public class Prog410t {
                         pov++;
                     }
             }
-            double percent = pov / 25.0;
+            System.out.println("Pov= " + pov + "count: " + count);
+            double percent = pov / count;
             System.out.println("id\t\tincome\tmembers");
             for (Cl410t x : households) {
                 if (x != null) // whatever
                     System.out.println(x);
             }
+            System.out.println("Percentage of households below poverty line: " + percent);
 
         } catch (IOException e) {
             System.out.println("Error: " + e);
