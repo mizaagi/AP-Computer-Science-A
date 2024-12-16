@@ -10,7 +10,9 @@ public class Prog215h {
             Scanner file = new Scanner(new File("Langdat/prog215h.txt"));
 
             while (file.hasNext()) {
-
+                double[] scores = new double[8];
+                double s1, s2, s3, s4, s5, s6, s7, s8;
+                s1 = file.nextDouble();
             }
         } catch (IOException e) {
             System.out.println("Error: " + e);
