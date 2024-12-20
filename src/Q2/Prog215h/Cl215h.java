@@ -1,5 +1,7 @@
 package Q2.Prog215h;
 
+import java.util.Arrays;
+
 public class Cl215h {
     private double[] scores;
     private int number;
@@ -9,15 +11,22 @@ public class Cl215h {
         this.number = n;
         this.scores = s;
         this.avg = 0;
+
     }
 
     public void calc() {
-        for (double x : scores)
+        for (double x : scores) {
             this.avg += x;
+
+        }
         this.avg /= 8;
+
     }
 
     public double getAvg() {
         return this.avg;
+    }
+    public String toString() {
+        return "Contestant " + number + "\n" + Arrays.toString(scores) + " = " + avg + "\n";
     }
 }
