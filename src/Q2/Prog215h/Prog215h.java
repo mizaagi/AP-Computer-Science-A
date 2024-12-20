@@ -27,7 +27,6 @@ public class Prog215h {
             }
             for (Cl215h a : athletes)
                 System.out.println(a);
-
         } catch (IOException e) {
             System.out.println("Error: " + e);
         }
