@@ -17,7 +17,6 @@ public class Cl215h {
     public void calc() {
         for (double x : scores) {
             this.avg += x;
-
         }
         this.avg /= 8;
 
