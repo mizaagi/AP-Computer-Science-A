@@ -24,15 +24,17 @@ public class Prog465b {
             for (int i = 0; i < mat.length; i++) {
                 for (int j = 0; j < mat[0].length; j++) {
                     if (mat[i][j] < 100) {
-                        lessMat[nums][0] = i;
-                        lessMat[nums][1] = j;
+                        lessMat[nums][0] = i+1;
+                        lessMat[nums][1] = j+1;
                         nums++;
                     }
                 }
             }
-            //for (
             System.out.println("Numbers Less Than 100");
-
+            System.out.println("Row\tColumn");
+            for (int[] arr : lessMat) {
+                System.out.println(arr[0] + "\t" + arr[1]);
+            }
 
 
         } catch (IOException e) {
