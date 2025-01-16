@@ -15,9 +15,17 @@ public class Prog465c {
             for (int i = 0; i < r; i++) {
                 for (int j = 0; j < c; j++) {
                     mat[i][j] = file.nextInt();
-                    //if (i == 0 || i )
+                    if (i == 0 || i = c - 1 || j == 0 || j == c - 1)
+                        count += mat[i][j];
                 }
             }
+            for (int i = 0; i < r; i++) {
+                for (int j = 0; j < c; j++) {
+                    System.out.print(mat[i][j] + "\t");
+                }
+                System.out.println();
+            }
+            System.out.println("The total of the edges is " + tot);
         } catch (IOException e) {
             System.out.println("Error: " + e);
         }

@@ -14,9 +14,24 @@ public class Prog465b {
                     mat[i][j] = file.nextInt();
                 }
             }
-
-
-
+            int count = 0;
+            for (int[] arr : mat)
+                for (int num : arr)
+                    if (num < 100)
+                        count++;
+            int nums = 0;
+            int[][] lessMat = new int[count][2];
+            for (int i = 0; i < mat.length; i++) {
+                for (int j = 0; j < mat[0].length; j++) {
+                    if (mat[i][j] < 100) {
+                        lessMat[nums][0] = i;
+                        lessMat[nums][1] = j;
+                        nums++;
+                    }
+                }
+            }
+            //for (
+            System.out.println("Numbers Less Than 100");
 
 
 
