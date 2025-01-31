@@ -32,6 +32,33 @@ public class Prog701g {
                 }
                 num = file.nextInt();
             }
+
+            double tot = 0; // for avg gpa
+            int cnt = 0;
+            int totstus = 0; // for teachers
+            String large = "";
+            String small = "asdnoiqfyiopqweroiqwiopufj.abm,.zhi;asfio;uqwefi;fvn;oqrqvjhnio[qfafjlasdffqwacvyhiopavyopqwfwqwfasvhio;wfqhqwfawvnio;ani;asbjhipqt8qthioavdhio;vankavs/avm/avML?vqwo'wghipqwghighi0[qgqghiopqwghiopqwghko;adg;asdvjasdvjnasdjeqfoioeqweqeyqwerjhoasdvnd";
+
+            for (Person p : list) {
+                if (p instanceof Student) {
+                    tot += ((Student) p).getGPA();
+                    cnt++;
+                } else if (p instanceof Teacher) {
+                    totstus += ((Teacher) p).getMyNumStus();
+                } else if (p instanceof Admin) {
+                    String word = ((Admin) p).getMyFavw();
+                    if (word.length() > large.length())
+                        large = word;
+                    if (word.length() < small.length())
+                        small = word;
+                }
+            }
+
+            System.out.printf("Average student GPA: %.2f\n", tot/cnt);
+            System.out.println("Total number of students taught by teachers: " + totstus);
+            System.out.println("Smallest favorite admin word: " + small);
+            System.out.println("Largest favorite admin word: " + large);
+
         } catch (IOException e) {
             System.out.println("Error: " + e);
         }

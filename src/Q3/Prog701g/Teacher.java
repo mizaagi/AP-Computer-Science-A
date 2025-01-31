@@ -8,5 +8,5 @@ public class Teacher extends Person {
         myNumStus = stu;
     }
 
-
+    public int getMyNumStus() { return myNumStus; }
 }
