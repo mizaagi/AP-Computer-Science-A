@@ -11,7 +11,7 @@ public class ArrayFixer {
         cols = c;
         array = arr;
         if (shouldBeReduced() >= 1)
-            newArray = new int[3][getReducedStats()];
+            newArray = new int[getReducedStats()][3];
         else newArray = new int[0][0];
     }
 

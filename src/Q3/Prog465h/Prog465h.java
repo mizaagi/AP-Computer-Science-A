@@ -18,8 +18,14 @@ public class Prog465h {
                         mat[i][j] = file.nextInt();
                 ArrayFixer hello = new ArrayFixer(mat, k, l);
                 hello.calcReduced();
-                if (hello.shouldBeReduced() >= 1) hello.printFormattedReduced();
-                else hello.printFormattedNormal();
+                if (hello.shouldBeReduced() >= 1) {
+                    System.out.println("REDUCED");
+                    hello.printFormattedReduced();
+                }
+                else {
+                    System.out.println("NORMAL");
+                    hello.printFormattedNormal();
+                }
             }
         } catch (IOException e) {
             System.out.println("Error: " + e);
