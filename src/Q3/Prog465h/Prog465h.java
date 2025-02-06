@@ -18,7 +18,7 @@ public class Prog465h {
                         mat[i][j] = file.nextInt();
                 ArrayFixer hello = new ArrayFixer(mat, k, l);
                 hello.calcReduced();
-                if (hello.shouldBeReduced() >= 1) {
+                if (hello.shouldBeReduced() == 1) {
                     System.out.println("REDUCED");
                     hello.printFormattedReduced();
                 }

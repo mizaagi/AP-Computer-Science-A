@@ -57,6 +57,7 @@ public class ArrayFixer {
 
     public void printFormattedReduced() {
         for (int[] mat : newArray) {
+            if (mat[2] == 0) continue;
             for (int i : mat) {
                 System.out.print(i + " ");
             }
