@@ -50,7 +50,7 @@ public class Prog492h {
         int neighbors = 0;
         for (int hola = -1; hola < 2; hola++)
             for (int hello = -1; hello < 2; hola++)
-                if (!(hola == 0 && hello == 0) && mat[m+hola][n+hello] == '*') neighbors++;
+                if (!(hola == 0 && hello == 0) && gen1[m+hola][n+hello] == '*') neighbors++;
         
         if (gen1[m][n] == '.')
             if (neighbors == 3)
