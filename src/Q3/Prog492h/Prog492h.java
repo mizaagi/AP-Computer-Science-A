@@ -9,15 +9,15 @@ public class Prog492h {
         try {
             // SETUP
             Scanner file = new Scanner(new File("Langdat/prog492h.dat"));
-            char[][] life = new char[31][30];
-            char[][] nextGen = new char[31][30];
+            String[][] life = new String[30][30];
+            String[][] nextGen = new String[30][30];
             int r = 0;
 
             // READING FILE INTO ARRAY
             while (file.hasNext()) {
                 String line = file.nextLine();
-                for (int i = 0; i < line.length(); i++) {
-                    life[r][i] = line.charAt(i);
+                for (int i = 0; i < 30; i++) {
+                    life[r][i] = line.substring(i, i+1);
                 }
                 r++;
             }
@@ -26,12 +26,8 @@ public class Prog492h {
             // MAIN CODE
             printArr(life);
             for (int gen = 1; gen <= 15; gen++) {
-                for (int i = 0; i < 31; i++) {
-                    for (int j = 0; j < 30; j ++) {
-                        update(life, nextGen, i, j);
-                    }
-                }
-                life = nextGen;
+                life = update(life);
+                System.out.println(gen);
                 printArr(life);
             }
             
@@ -41,32 +37,40 @@ public class Prog492h {
         }
     }
 
-    public static void update(char[][] gen1, char[][] gen2, int m, int n) {
+    public static String[][] update(String[][] gen1) {
         /*
         [mat[m-1][n-1]      mat[m-1][n]     mat[m-1][n+1]]
         [mat[m][n-1]        mat[m][n]       mat[m][n+1]]
         [mat[m+1][n-1]      mat[m+1][n]     mat[m+1][n+1]]
         */
         int neighbors = 0;
-        for (int hola = -1; hola < 2; hola++)
-            for (int hello = -1; hello < 2; hola++)
-                if (!(hola == 0 && hello == 0) && gen1[m+hola][n+hello] == '*') neighbors++;
-        
-        if (gen1[m][n] == '.')
-            if (neighbors == 3)
-                gen2[m][n] = '*';
-        else
-            if (neighbors <= 1 || neighbors >= 4)
-                gen2[m][n] = '.';
+        String[][] gen2 = gen1;
+        for (int m = 0; m < 30; m++) {
+            for (int n = 0; n < 30; n++) {
+                neighbors = 0;
+                for (int ro = -1; ro < 2; ro++)
+                    for (int co = -1; co < 2; co++)
+                        if ((!(ro == 0 && co == 0)) && m+ro != -1 && n+co != -1 && m+ro != 30 && n+co != 30)
+                            if (gen1[m+ro][n+co].equals("*"))
+                                neighbors++;
+                if (gen1[m][n].equals("."))
+                    if (neighbors == 3)
+                        gen2[m][n] = "*";
+                    else
+                    if (neighbors <= 1 || neighbors >= 4)
+                        gen2[m][n] = ".";
+            }
+        }
+
+        return gen2;
     }
 
-    public static void printArr(char[][] bigMat) {
-        for (char[] mat : bigMat) {
-            System.out.print("[");
-            for (char c : mat) {
-                System.out.print(c + ", ");
+    public static void printArr(String[][] bigMat) {
+        for (String[] mat : bigMat) {
+            for (String c : mat) {
+                System.out.print(c);
             }
-            System.out.print("],\n");
+            System.out.print("\n");
         }
     }
 }
