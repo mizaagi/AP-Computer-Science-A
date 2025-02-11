@@ -20,22 +20,25 @@ public class Cl214c {
         total = 0;
     }
 
-    public void calcSub() {
-        if (grade.equals("R"))
+    public void calc() {
+        if (grade.equals("R")) {
             gasPrice = 1.359 * gallons;
             perGPrice = 1.359;
-        else if (grade.equals("P"))
+        }
+        else if (grade.equals("P")) {
             gasPrice = 1.479 * gallons;
             perGPrice = 1.479;
-        else if (grade.equals("H"))
+        }
+        else if (grade.equals("H")) {
             gasPrice = 1.429 * gallons;
             perGPrice = 1.429;
+        }
         else
             System.out.println("Not a valid gas type.");
         if (gallons > 20)
             washPrice = 0;
         else if (gallons > 10)
-            for (int i = gallons - 10; i > 0; i--)
+            for (double i = gallons - 10; i > 0; i--)
                 gasPrice *= 0.9;
         if (dirty.equals("Y"))
             total = gasPrice + washPrice;
