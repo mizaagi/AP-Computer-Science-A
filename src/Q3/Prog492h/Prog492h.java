@@ -24,7 +24,7 @@ public class Prog492h {
 
             // MAIN CODE
             printArr(arr);
-            ThisIsDumb hola = new ThisIsDumb(arr);
+            ThisIsDumb2 hola = new ThisIsDumb2(arr);
             for (int gen = 1; gen <= 15; gen++) {
                 hola.newGen();
                 System.out.println(gen);

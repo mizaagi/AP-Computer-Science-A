@@ -1,9 +1,11 @@
-public class ThisIsDumb {
+package Q3.Prog492h;
+
+public class ThisIsDumb2 {
     private String[][] life;
 
-    public ThisIsDumb(String[][] l) {
+    public ThisIsDumb2(String[][] l) {
         life = l;
-        
+
     }
 
     public void newGen() {
@@ -21,7 +23,7 @@ public class ThisIsDumb {
                         nextGen[i][j] = "*";
                     else
                         nextGen[i][j] = ".";
-                } 
+                }
                 else {
                     if (n == 3)
                         nextGen[i][j] = "*";
