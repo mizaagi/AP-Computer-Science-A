@@ -10,4 +10,7 @@ public class Beeper extends Animal {
         extraWord = ew;
     }
 
+    public String getExtraWord() {
+        return extraWord;
+    }
 }

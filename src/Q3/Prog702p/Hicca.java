@@ -9,4 +9,8 @@ public class Hicca extends Animal {
         super(fn, ln);
         furPrice = fp;
     }
+
+    public double getFurPrice() {
+        return furPrice;
+    }
 }

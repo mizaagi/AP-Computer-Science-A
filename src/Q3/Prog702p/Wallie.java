@@ -10,4 +10,7 @@ public class Wallie extends Animal {
         steps = s;
     }
 
+    public int getSteps() {
+        return steps;
+    }
 }
