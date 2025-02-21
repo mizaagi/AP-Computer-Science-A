@@ -11,10 +11,10 @@ public class Prog702p {
     public static void main(String[] args) {
         try {
             Scanner file = new Scanner(new File("Langdat/prog701g.dat"));
-            double hicAvg = 0;
-            double walAvg = 0;
-            double bepAvg = 0;
-            int count = 0;
+            double hicAvg = 0.0;
+            double walAvg = 0.0;
+            double bepAvg = 0.0;
+            double count = 0.0;
             int choice = 0;
             ArrayList<Hicca> hiccas = new ArrayList<Hicca>();
             ArrayList<Wallie> wallies = new ArrayList<Wallie>();
@@ -42,14 +42,14 @@ public class Prog702p {
                 walAvg += w.getSteps();
                 count++;
             }
-            bepAvg /= count;
+            walAvg /= count;
             count = 0;
             for (Hicca h : hiccas) {
-                bepAvg += h.getFurPrice();
+                hicAvg += h.getFurPrice();
                 count++;
             }
-            bepAvg /= count;
-            count = 0;
+            hicAvg /= count;
+
 
             System.out.println("The average value of the Hicca fur is: " + hicAvg);
             System.out.println("The average number of steps taken by the Wallies is: " + walAvg);
