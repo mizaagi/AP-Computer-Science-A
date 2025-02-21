@@ -16,7 +16,9 @@ public class Prog702p {
             double bepAvg = 0.0;
             double count = 0.0;
             int choice = 0;
-            ArrayList<Hicca> hiccas = new ArrayList<Hicca>();
+            int[] alphaCount = new int[26];
+            String alphabet = "abcdefghijklmnopqrstuvwxyz";
+            ArrayList<Hicca> hiccas   = new ArrayList<Hicca>();
             ArrayList<Wallie> wallies = new ArrayList<Wallie>();
             ArrayList<Beeper> beepers = new ArrayList<Beeper>();
             while (file.hasNext()) {
@@ -49,11 +51,24 @@ public class Prog702p {
                 count++;
             }
             hicAvg /= count;
-
+            for (Beeper b : beepers) {
+                for (int i = 0; i < b.getExtraWord().length(); i++) {
+                    alphaCount[alphabet.indexOf(b.getExtraWord.substring(i, i+1))]++;
+                }
+            }
+            String mostCom = "";
+            int max = -1;
+            for (int i = 0; i < 26; i++) {
+                if (alphaCount[i] > max) {
+                    max = alphaCount[i];
+                    mostCom = alphabet.substring(i, i+1);
+                }
+            }
 
             System.out.println("The average value of the Hicca fur is: " + hicAvg);
             System.out.println("The average number of steps taken by the Wallies is: " + walAvg);
             System.out.println("The average size of the Beeper's word is: " + bepAvg);
+            System.out.println("The most common letter of the Beeper's word is" + mostCom);
         } catch (IOException e) {
             System.out.println("Error: " + e);
         }
