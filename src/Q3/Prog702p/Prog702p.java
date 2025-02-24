@@ -53,7 +53,7 @@ public class Prog702p {
             hicAvg /= count;
             for (Beeper b : beepers) {
                 for (int i = 0; i < b.getExtraWord().length(); i++) {
-                    alphaCount[alphabet.indexOf(b.getExtraWord.substring(i, i+1))]++;
+                    alphaCount[alphabet.indexOf(b.getExtraWord().substring(i, i+1))]++;
                 }
             }
             String mostCom = "";
@@ -68,7 +68,7 @@ public class Prog702p {
             System.out.println("The average value of the Hicca fur is: " + hicAvg);
             System.out.println("The average number of steps taken by the Wallies is: " + walAvg);
             System.out.println("The average size of the Beeper's word is: " + bepAvg);
-            System.out.println("The most common letter of the Beeper's word is" + mostCom);
+            System.out.println("The most common letter of the Beeper's word is " + mostCom);
         } catch (IOException e) {
             System.out.println("Error: " + e);
         }
