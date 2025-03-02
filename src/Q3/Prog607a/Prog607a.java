@@ -12,10 +12,9 @@ public class Prog607a {
         System.out.println("0) Quit");
         System.out.println("1) Encode Date");
         System.out.println("2) Decode Date");
-        System.out.print("Select an option: ");
-        int num = input.nextInt();
-        
         while (keepGoing) {
+            System.out.print("Select an option: ");
+            int num = input.nextInt();
             if (num == 0)
                 keepGoing = false;
             else if (num == 1) {

@@ -24,15 +24,29 @@ public class EncodeDecode {
         yearAlp  = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
         if (type.equals("date")) {
             decoded = x;
-            if (x.substring(0, 1).equals("0"))
-                day = Integer.parseInt(x.substring(0, 1));
-            else
-                day = Integer.parseInt(x.substring(0, 2));
-            if (x.substring(0, 1).equals("0"))
-                month = Integer.parseInt(x.substring(4, 5));
-            else
-                month = Integer.parseInt(x.substring(3, 5));
-            year = Integer.parseInt(x.substring(6));
+            if (x.substring(1, 2).equals("/")) {
+                month = Integer.parseInt(x.substring(0, 1));
+                if (x.substring(3, 4).equals("/")) {
+                    day = Integer.parseInt(x.substring(2, 3));
+                    year = Integer.parseInt(x.substring(4));
+                }
+                else {
+                    day = Integer.parseInt(x.substring(2, 4));
+                    year = Integer.parseInt(x.substring(5));
+                }
+            }
+            else {
+                month = Integer.parseInt(x.substring(0, 2));
+                if (x.substring(4, 5).equals("/")) {
+                    day = Integer.parseInt(x.substring(3, 4));
+                    year = Integer.parseInt(x.substring(5));
+                }
+                else {
+                    day = Integer.parseInt(x.substring(3, 5));
+                    year = Integer.parseInt(x.substring(6));
+                }
+            }
+
         } else {
             encoded = x;
             mStr = encoded.substring(0, 1);
@@ -41,22 +55,15 @@ public class EncodeDecode {
         }
     }
 
-    public void updateDate(String date) {
-        if (date.substring(0, 1).equals("0"))
-            day = Integer.parseInt(date.substring(0, 1));
-        else
-            day = Integer.parseInt(date.substring(0, 2));
-        if (date.substring(0, 1).equals("0"))
-            month = Integer.parseInt(date.substring(4, 5));
-        else
-            month = Integer.parseInt(date.substring(3, 5));
-        year = Integer.parseInt(date.substring(6));
-    }
 
     public void encode() {
         mStr = monthAlp.substring(month-1, month);
-        dStr = dayAlp.substring(day/10-1, day/10) + dayAlp.substring(day%10-1, day%10);
-        yStr = yearAlp.substring(year-1971, year-1970);
+        if (day <= 9) {
+            dStr += "O";
+            dStr += dayAlp.substring(day%10-1, day%10);
+        } else
+            dStr += dayAlp.substring(day/10-1, day/10) + dayAlp.substring(day%10-1, day%10);
+        yStr = yearAlp.substring(year-71, year-70);
         encoded = mStr + dStr + yStr;
     }
 
