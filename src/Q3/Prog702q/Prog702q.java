@@ -10,7 +10,7 @@ public class Prog702q {
     public static void main(String[] args) {
         try {
             Scanner file = new Scanner(new File("Langdat/prog702q.txt"));
-            List<Vehicle> vehicles = new List<Vehicle>();
+            List<Vehicle> vehicles = new ArrayList<Vehicle>();
             while (file.hasNext()) {
                 if (file.nextInt() == 1) {
                     String name = file.next();
@@ -53,6 +53,7 @@ public class Prog702q {
                 } else if (v instanceof Truck) {
                     totCWorth += v.getValue();
                     totTtires += ((Truck)v).getTire();
+                    double tWorth = ((Truck)v).getValue();
                     if (tWorth < tLeastVal) {
                         tLeastVal = tWorth;
                         tNameLeastVal = ((Truck)v).getName();

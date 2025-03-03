@@ -6,5 +6,5 @@ public class Car extends Vehicle {
         value = w;
     }
 
-
+    public double getWorth() { return value; }
 }

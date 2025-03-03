@@ -15,7 +15,7 @@ public class Vehicle implements names {
         return name;
     }
 
-    public int getTires() {
+    public int getTire() {
         return tires;
     }
 
