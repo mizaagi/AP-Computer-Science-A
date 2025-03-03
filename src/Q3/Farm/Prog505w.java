@@ -53,6 +53,20 @@ public class Prog505w {
             // TODO: report income of the day, cumulative weight of all animals,
             // TODO: if there's enough food to feed all, cow that makes the most money
 
+            double iotd = 0;
+            for (Animal a : animals) {
+                if (a instanceof Cow) {
+                    iotd += ((Cow)a).value(cornCost, hayCost);
+                } else if (a instanceof Horse) {
+                    iotd += ((Horse)a).value(cornCost, hayCost);
+                }
+            }
+            System.out.println("Income of the day: " + iotd);
+
+            double cuWeight = 0;
+
+
+
             int minHorseIndex = 0;
             double minHorseValue = Double.MAX_VALUE;
             for (int lcv = 0; lcv < animals.size(); lcv++) {
