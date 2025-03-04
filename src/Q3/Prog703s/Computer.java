@@ -1,4 +1,4 @@
-package Q3;
+package Q3.Prog703s;
 
 public class Computer implements comps {
     private String name;

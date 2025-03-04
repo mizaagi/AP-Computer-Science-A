@@ -50,9 +50,6 @@ public class Prog505w {
                 }
             }
 
-            // TODO: report income of the day, cumulative weight of all animals,
-            // TODO: if there's enough food to feed all, cow that makes the most money
-
             double iotd = 0;
             for (Animal a : animals) {
                 if (a instanceof Cow) {
@@ -64,8 +61,46 @@ public class Prog505w {
             System.out.println("Income of the day: " + iotd);
 
             double cuWeight = 0;
+            for (Animal a : animals) {
+                if (a instanceof Cow) {
+                    cuWeight += ((Cow)a).getWeight();
+                } else if (a instanceof Horse) {
+                    cuWeight += ((Horse)a).getWeight();
+                }
+            }
+            System.out.println("Cumulative weight of all animals: " + cuWeight);
+
+            double neededFood = 0;
+            double actualFood = hay + corn;
+            for (Animal a : animals) {
+                if (a instanceof Cow) {
+                    neededFood += ((Cow)a).getNumCorn();
+                    neededFood += ((Cow)a).getNumHayBales();
+                } else if (a instanceof Horse) {
+                    neededFood += ((Horse)a).getNumCorn();
+                    neededFood += ((Horse)a).getNumHayBales();
+                }
+            }
+            if (neededFood > actualFood) {
+                System.out.println("Not enough food!");
+            } else {
+                System.out.println("Enough food!");
+            }
 
 
+            int maxCowIndex = 0;
+            double maxCowValue = Double.MIN_VALUE;
+            for (int lcv = 0; lcv < animals.size(); lcv++) {
+                if (animals.get(lcv) instanceof Horse) {
+                    Horse horse = (Horse) animals.get(lcv);
+                    double horseValue = horse.value(cornCost, hayCost);
+                    if (horseValue > maxCowValue) {
+                        maxCowIndex = lcv;
+                        maxCowValue = horseValue;
+                    }
+                }
+            }
+            System.out.printf("Cow %s makes the most money\n", animals.get(maxCowIndex).getName());
 
             int minHorseIndex = 0;
             double minHorseValue = Double.MAX_VALUE;

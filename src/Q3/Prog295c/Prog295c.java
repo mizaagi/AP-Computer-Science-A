@@ -1,9 +1,10 @@
-package Q3;
+package Q3.Prog295c;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
-import Employee;
+
 
 
 public class Prog295c {
@@ -16,9 +17,9 @@ public class Prog295c {
             while (file.hasNext()) {
                 String s = file.next();
                 String everything = file.next();
-                String c = everything.charAt(0);
-                String t = everything.charAt(1);
-                String d = everything.charAt(2);
+                String c = everything.substring(0, 1);
+                String t = everything.substring(1, 2);
+                String d = everything.substring(2, 3);
                 Employee e = new Employee(s,c,t,d);
                 emps.add(e);
             }
@@ -27,17 +28,17 @@ public class Prog295c {
             while (file.hasNext()) {
                 String s = file.next();
                 String everything = file.next();
-                String c = everything.charAt(0);
-                String t = everything.charAt(1);
-                String d = everything.charAt(2);
+                String c = everything.substring(0, 1);
+                String t = everything.substring(1, 2);
+                String d = everything.substring(2, 3);
                 Employee e = new Employee(s,c,t,d);
                 altEmps.add(e);
             }
             
             for (Employee e : altEmps)
-                for (int i = 0; i < emps.length(); i++)
+                for (int i = 0; i < emps.size(); i++)
                     if (e.getSsnSum() < emps.get(i).getSsnSum())
-                        emps.add(e, i);
+                        emps.add(i, e);
 
 
             System.out.println("social sec#  Class  Type  Dept");

@@ -1,4 +1,4 @@
-package Q3;
+package Q3.Prog295c;
 
 public class Employee {
     private String ssn;
