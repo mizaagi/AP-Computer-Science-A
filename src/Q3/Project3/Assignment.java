@@ -1,4 +1,4 @@
-package Q3.Project3Principles;
+package Q3.Project3;
 
 public class Assignment {
     private double score;
