@@ -19,8 +19,5 @@ public class Prog910b {
             int b = input.nextInt();
             System.out.print("The number " + n + " in base " + b + " is " + recBaseChange(n, b));
         }
-
     }
-
-
 }
