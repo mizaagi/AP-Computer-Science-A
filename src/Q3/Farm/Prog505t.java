@@ -9,15 +9,17 @@ public class Prog505t {
     public static void main(String[] args) {
         try {
             Scanner file = new Scanner(new File("Langdat/Prog505t.dat"));
-            List<Animal> animals = new ArrayList<>();
-            /*
-            int hay = file.nextInt();
-            double hayCost = file.nextDouble();
-            int corn = file.nextInt();
-            double cornCost = file.nextDouble();
-             */
 
-            while (file.hasNext()) {
+            ArrayList<Horse> horses = new ArrayList<>();
+            ArrayList<Cow> cows = new ArrayList<>();
+            int hayBales = file.nextInt();
+            double hbCost = file.nextDouble();
+            int cornCobs = file.nextInt();
+            double ccCost = file.nextDouble();
+            int numCows = file.nextInt();
+
+            for (int i = 0; i < numCows; i++) {
+                double weight = file.nextDouble();
 
             }
         } catch (IOException e) {
