@@ -19,9 +19,54 @@ public class Prog505t {
             int numCows = file.nextInt();
 
             for (int i = 0; i < numCows; i++) {
-                double weight = file.nextDouble();
-
+                int weight = file.nextInt();
+                double pounds = file.nextDouble();
+                int indHayBales = file.nextInt();
+                int indCornCobs = file.nextInt();
+                Cow c = new Cow("Cow", weight, pounds, indCornCobs, indHayBales);
+                cows.add(c);
             }
+
+            int numHorses = file.nextInt();
+            for (int i = 0; i < numHorses; i++) {
+                int weight = file.nextInt();
+                int indHayBales = file.nextInt();
+                int indCornCobs = file.nextInt();
+                int numRides = file.nextInt();
+                double rideCost = file.nextDouble();
+                Horse h = new Horse("Horse", weight, indCornCobs, indHayBales, numRides, rideCost);
+                horses.add(h);
+            }
+
+            double iotd = 0;
+            for (Horse a : horses) {
+                iotd += a.value(ccCost, hbCost);
+            }
+            for (Cow a : cows) {
+                iotd += a.value(ccCost, hbCost);
+            }
+            System.out.println("IOTD: " + iotd);
+
+            double feedCost = 0;
+            for (Horse a : horses) {
+                feedCost += a.getFeedCost(ccCost, hbCost);
+            }
+            for (Cow a : cows) {
+                feedCost += a.getFeedCost(ccCost, hbCost);
+            }
+            System.out.println("Feed Cost: " + feedCost);
+
+            int totalWeight = 0;
+            for (Horse a : horses) {
+                totalWeight += a.getWeight();
+            }
+            for (Cow a : cows) {
+                totalWeight += a.getWeight();
+            }
+            System.out.println("Total Weight: " + totalWeight);
+
+
+
         } catch (IOException e) {
             System.out.println("Error: " + e);
         }
