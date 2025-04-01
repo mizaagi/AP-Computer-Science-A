@@ -66,7 +66,6 @@ public class Prog505t {
             System.out.println("Total Weight: " + totalWeight);
 
 
-
         } catch (IOException e) {
             System.out.println("Error: " + e);
         }
