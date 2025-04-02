@@ -6,6 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Prog505t {
+    public int findLowest(ArrayList<Integer> a) {
+        int minIndex = 0;
+        int minInt = a.get(0);
+        for (int i = 0; i < a.size(); i++) {
+            if (a.get(i) < minInt) {
+               minIndex = i;
+               minInt = a.get(i);
+            }
+        }
+        return minIndex;
+    }
     public static void main(String[] args) {
         try {
             Scanner file = new Scanner(new File("Langdat/Prog505t.dat"));
@@ -64,6 +75,25 @@ public class Prog505t {
                 totalWeight += a.getWeight();
             }
             System.out.println("Total Weight: " + totalWeight);
+
+
+            int cornNeeded = 0;
+            int hayNeeded  = 0;
+            for (Horse a : horses) {
+                cornNeeded += a.getNumCorn();
+                hayNeeded += a.getNumHayBales();
+            }
+            for (Cow a : cows) {
+                cornNeeded += a.getNumCorn();
+                hayNeeded += a.getNumHayBales();
+            }
+            if (cornCobs < cornNeeded || hayBales < hayNeeded) {
+                System.out.println("Not enough hay or corn!");
+            } else {
+                System.out.println("Animals fed!");
+                cornCobs -= cornNeeded;
+                hayBales -= hayNeeded;
+            }
 
 
         } catch (IOException e) {
