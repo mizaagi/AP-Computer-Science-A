@@ -19,32 +19,32 @@ public class Prog505t {
     }
     public static void main(String[] args) {
         try {
-            Scanner file = new Scanner(new File("Langdat/Prog505t.dat"));
+            Scanner maya = new Scanner(new File("Langdat/Prog505t.dat"));
 
             ArrayList<Horse> horses = new ArrayList<>();
             ArrayList<Cow> cows = new ArrayList<>();
-            int hayBales = file.nextInt();
-            double hbCost = file.nextDouble();
-            int cornCobs = file.nextInt();
-            double ccCost = file.nextDouble();
-            int numCows = file.nextInt();
+            int hayBales =  maya.nextInt();
+            double hbCost = maya.nextDouble();
+            int cornCobs =  maya.nextInt();
+            double ccCost = maya.nextDouble();
+            int numCows =   maya.nextInt();
 
             for (int i = 0; i < numCows; i++) {
-                int weight = file.nextInt();
-                double pounds = file.nextDouble();
-                int indHayBales = file.nextInt();
-                int indCornCobs = file.nextInt();
+                int weight = maya.nextInt();
+                double pounds =  maya.nextDouble();
+                int indHayBales = maya.nextInt();
+                int indCornCobs = maya.nextInt();
                 Cow c = new Cow("Cow", weight, pounds, indCornCobs, indHayBales);
                 cows.add(c);
             }
 
-            int numHorses = file.nextInt();
+            int numHorses = maya.nextInt();
             for (int i = 0; i < numHorses; i++) {
-                int weight = file.nextInt();
-                int indHayBales = file.nextInt();
-                int indCornCobs = file.nextInt();
-                int numRides = file.nextInt();
-                double rideCost = file.nextDouble();
+                int weight = maya.nextInt();
+                int indHayBales = maya.nextInt();
+                int indCornCobs = maya.nextInt();
+                int numRides = maya.nextInt();
+                double rideCost = maya.nextDouble();
                 Horse h = new Horse("Horse", weight, indCornCobs, indHayBales, numRides, rideCost);
                 horses.add(h);
             }
@@ -94,6 +94,24 @@ public class Prog505t {
                 cornCobs -= cornNeeded;
                 hayBales -= hayNeeded;
             }
+            int cowIndex = 0;
+            Cow cheapCow = cows.get(0);
+            for (int repeat = 0; repeat < 3; repeat++) {
+                for (int i = 1; i < cows.size(); i++) {
+                    if (cows.get(i).getMilk() < cheapCow.getMilk()) {
+                        cowIndex = i;
+                        cheapCow = cows.get(i);
+                    }
+                }
+                cows.remove(cowIndex);
+            }
+
+            cows.remove(0);
+            cows.add(0, new Cow("Cow", 1250, 80, 3, 4));
+            System.out.println(cows.size() + " total cows");
+            System.out.println(horses.size() + " total horses");
+
+
 
 
         } catch (IOException e) {
