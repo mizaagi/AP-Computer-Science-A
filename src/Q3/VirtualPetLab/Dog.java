@@ -18,6 +18,6 @@ public class Dog extends Pet {
 
     @Override
     public void sleep() {
-        // TODO: Implement sleeping behavior for Dog
+
     }
 }
