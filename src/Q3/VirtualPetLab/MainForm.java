@@ -40,7 +40,7 @@ public class MainForm extends JFrame {
         feedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: Implement feeding the selected pet
+                ((Pet) petSelectorComboBox.getSelectedItem()).feed();
             }
         });
 
@@ -48,7 +48,7 @@ public class MainForm extends JFrame {
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: Implement playing with the selected pet
+                ((Pet) petSelectorComboBox.getSelectedItem()).play();
             }
         });
 
@@ -56,7 +56,7 @@ public class MainForm extends JFrame {
         sleepButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: Implement putting the selected pet to sleep
+                ((Pet) petSelectorComboBox.getSelectedItem()).sleep();
             }
         });
 
@@ -67,14 +67,30 @@ public class MainForm extends JFrame {
                 // Make sure the action event isn't triggered by the removeAllItems() call
                 if (petSelectorComboBox.getSelectedIndex() == -1) return;
 
-                // TODO: Implement pet selection change
                 // 1. Grab the current pet from the petManager using petSelectorComboBox.getSelectedIndex()
+                Pet current = petManager.getPets().get(petSelectorComboBox.getSelectedIndex());
                 // 2. Update statusLabel with the selected pet's status
+                statusLabel.setText(current.getStatus());
                 // 3. Update imageLabel with the selected pet's image using setPetImage()
+                setPetImage(current.getImage());
             }
         });
 
         adoptFoxButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = JOptionPane.showInputDialog("Enter new pet name: ");
+            }
+        });
+
+        adoptCatButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = JOptionPane.showInputDialog("Enter new pet name: ");
+            }
+        });
+
+        adoptDogButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String name = JOptionPane.showInputDialog("Enter new pet name: ");
@@ -88,7 +104,10 @@ public class MainForm extends JFrame {
 
     public void updatePetList() {
         petSelectorComboBox.removeAllItems();  // Clear existing items
-        // TODO: Update petSelectorComboBox with pet names from petManager
+        for (Pet p : petManager.getPets()) {
+            petSelectorComboBox.addItem(p.getName());
+        }
+        petSelectorComboBox.setSelectedIndex(petManager.getPets().size() - 1);
         // After adding the pet, set the selected index to the last item (petManager.getPets().size() - 1)
     }
 
