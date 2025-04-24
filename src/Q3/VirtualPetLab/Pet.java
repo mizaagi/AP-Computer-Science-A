@@ -30,6 +30,7 @@ public abstract class Pet {
     public void setEnergy(int energy)       { this.energy = energy; }
     public void setHappiness(int happiness) { this.happiness = happiness; }
     public void setImage(String image)      { this.image = image; }
+    public void setStatus(String stat)      { this.status = stat; }
 
     // Implement in the child classes
     public abstract void feed();

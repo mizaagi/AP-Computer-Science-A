@@ -1,14 +1,14 @@
 package Q3.VirtualPetLab;
 
-public class Dog extends Pet {
-    public Dog(String name) {
+public class Fox extends Pet {
+    public Fox(String name) {
         super(name);
-        super.setImage(ImageHelper.getRandomDogImg());
+        super.setImage(ImageHelper.getRandomFoxImg());
     }
 
     @Override
     public void feed() {
-        super.setEnergy(super.getEnergy() + 20);
+        super.setEnergy(super.getEnergy() + 10);
         super.setHappiness(super.getHappiness() + 20);
         super.setHunger(super.getHunger() - 20);
 
@@ -20,9 +20,9 @@ public class Dog extends Pet {
 
     @Override
     public void play() {
-        super.setEnergy(super.getEnergy() - 20);
-        super.setHappiness(super.getHappiness() + 10);
-        super.setHunger(super.getHunger() + 10);
+        super.setEnergy(super.getEnergy() + 20);
+        super.setHappiness(super.getHappiness() + 20);
+        super.setHunger(super.getHunger() + 20);
 
         if (super.getEnergy() < 0) super.setEnergy(0);
         if (super.getHappiness() > 100) super.setHappiness(100);
@@ -32,9 +32,8 @@ public class Dog extends Pet {
 
     @Override
     public void sleep() {
-        super.setEnergy(super.getEnergy() + 20);
-        super.setHappiness(super.getHappiness() + 20);
-        super.setHunger(super.getHunger() - 10);
+        super.setEnergy(super.getEnergy() + 10);
+        super.setHappiness(super.getHappiness() + 10);
 
         if (super.getEnergy() > 100) super.setEnergy(100);
         if (super.getHappiness() > 100) super.setHappiness(100);

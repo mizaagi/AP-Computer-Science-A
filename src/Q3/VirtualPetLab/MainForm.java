@@ -80,6 +80,9 @@ public class MainForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String name = JOptionPane.showInputDialog("Enter new pet name: ");
+                Fox meow = new Fox(name);
+                petManager.addPet(meow);
+                updateStatusLabel(meow.getStatus());
             }
         });
 
@@ -87,6 +90,9 @@ public class MainForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String name = JOptionPane.showInputDialog("Enter new pet name: ");
+                Cat meow = new Cat(name);
+                petManager.addPet(meow);
+                updateStatusLabel(meow.getStatus());
             }
         });
 
@@ -94,6 +100,9 @@ public class MainForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String name = JOptionPane.showInputDialog("Enter new pet name: ");
+                Dog meow = new Dog(name);
+                petManager.addPet(meow);
+                updateStatusLabel(meow.getStatus());
             }
         });
     }
@@ -147,7 +156,8 @@ public class MainForm extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
