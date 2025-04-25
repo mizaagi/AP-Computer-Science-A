@@ -15,7 +15,6 @@ public class Cat extends Pet {
         if (super.getEnergy() > 100) super.setEnergy(100);
         if (super.getHappiness() > 100) super.setHappiness(100);
         if (super.getHunger() < 0) super.setHunger(0);
-        setStatus("Hunger: " + super.getHunger() + ", Energy: " + super.getEnergy() + ", Happiness: " + super.getHappiness());
     }
 
     @Override
@@ -27,7 +26,6 @@ public class Cat extends Pet {
         if (super.getEnergy() < 0) super.setEnergy(0);
         if (super.getHappiness() > 100) super.setHappiness(100);
         if (super.getHunger() > 100) super.setHunger(100);
-        setStatus("Hunger: " + super.getHunger() + ", Energy: " + super.getEnergy() + ", Happiness: " + super.getHappiness());
     }
 
     @Override
@@ -39,6 +37,5 @@ public class Cat extends Pet {
         if (super.getEnergy() > 100) super.setEnergy(100);
         if (super.getHappiness() > 100) super.setHappiness(100);
         if (super.getHunger() < 0) super.setHunger(0);
-        setStatus("Hunger: " + super.getHunger() + ", Energy: " + super.getEnergy() + ", Happiness: " + super.getHappiness());
     }
 }

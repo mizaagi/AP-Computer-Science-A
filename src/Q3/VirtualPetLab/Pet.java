@@ -6,7 +6,6 @@ public abstract class Pet {
     private int hunger;
     private int energy;
     private int happiness;
-    private String status;
     public static final int MAX_HUNGER = 100;
     public static final int MAX_ENERGY = 100;
     public static final int MAX_HAPPINESS = 100;
@@ -17,7 +16,6 @@ public abstract class Pet {
         this.energy = 50;    // Midpoint of energy
         this.happiness = 50; // Midpoint of happiness
         this.image = "";
-        this.status = "";
     }
 
     public String getName()   { return name; }
@@ -30,7 +28,6 @@ public abstract class Pet {
     public void setEnergy(int energy)       { this.energy = energy; }
     public void setHappiness(int happiness) { this.happiness = happiness; }
     public void setImage(String image)      { this.image = image; }
-    public void setStatus(String stat)      { this.status = stat; }
 
     // Implement in the child classes
     public abstract void feed();
@@ -39,7 +36,7 @@ public abstract class Pet {
 
     // TODO: Add a public method to return the pet's status as a string
     public String getStatus() {
-        return status;
+        return "Hunger: " + getHunger() + ", Energy: " + getEnergy() + ", Happiness: " + getHappiness();
     }
 
     // It may also be help to make a public/protected "clampAttributes()" method to ensure that the pet's attributes do

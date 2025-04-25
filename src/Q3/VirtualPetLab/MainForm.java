@@ -41,6 +41,7 @@ public class MainForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ((Pet) petSelectorComboBox.getSelectedItem()).feed();
+                updateStatusLabel(((Pet) (petSelectorComboBox.getSelectedItem())).getStatus());
             }
         });
 
@@ -49,6 +50,7 @@ public class MainForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ((Pet) petSelectorComboBox.getSelectedItem()).play();
+                updateStatusLabel(((Pet) (petSelectorComboBox.getSelectedItem())).getStatus());
             }
         });
 
@@ -57,6 +59,7 @@ public class MainForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ((Pet) petSelectorComboBox.getSelectedItem()).sleep();
+                updateStatusLabel(((Pet) (petSelectorComboBox.getSelectedItem())).getStatus());
             }
         });
 
@@ -83,6 +86,7 @@ public class MainForm extends JFrame {
                 Fox meow = new Fox(name);
                 petManager.addPet(meow);
                 updateStatusLabel(meow.getStatus());
+                petSelectorComboBox.updateUI();
             }
         });
 
