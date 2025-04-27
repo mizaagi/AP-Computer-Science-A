@@ -1,6 +1,13 @@
-package Q3.VirtualPetLab;
+package Quarter4.VirtualPetLab;
+
+import Quarter4.VirtualPetLab.Cat;
+import Quarter4.VirtualPetLab.Dog;
+import Quarter4.VirtualPetLab.Pet;
+import Quarter4.VirtualPetLab.PetManager;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,10 +20,10 @@ public class MainForm extends JFrame {
     private JLabel statusLabel;
     private JLabel imageLabel;
     private JComboBox<String> petSelectorComboBox;
-    private JButton adoptFoxButton;
+    // : add adoption buttons
     private JButton adoptCatButton;
     private JButton adoptDogButton;
-
+    private JButton adoptFoxButton;
     // Pet list
     private PetManager petManager = new PetManager();
 
@@ -40,8 +47,11 @@ public class MainForm extends JFrame {
         feedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ((Pet) petSelectorComboBox.getSelectedItem()).feed();
-                updateStatusLabel(((Pet) (petSelectorComboBox.getSelectedItem())).getStatus());
+                // : Implement feeding the selected pet
+                Pet p = petManager.getSelectedPet(petSelectorComboBox.getSelectedIndex());
+                p.feed();
+                updateStatusLabel(p.toString());
+                waitButtons(1);
             }
         });
 
@@ -49,8 +59,11 @@ public class MainForm extends JFrame {
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ((Pet) petSelectorComboBox.getSelectedItem()).play();
-                updateStatusLabel(((Pet) (petSelectorComboBox.getSelectedItem())).getStatus());
+                // : Implement playing with the selected pet
+                Pet p = petManager.getSelectedPet(petSelectorComboBox.getSelectedIndex());
+                p.play();
+                updateStatusLabel(p.toString());
+                waitButtons(1);
             }
         });
 
@@ -58,8 +71,11 @@ public class MainForm extends JFrame {
         sleepButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ((Pet) petSelectorComboBox.getSelectedItem()).sleep();
-                updateStatusLabel(((Pet) (petSelectorComboBox.getSelectedItem())).getStatus());
+                //  Implement putting the selected pet to sleep
+                Pet p = petManager.getSelectedPet(petSelectorComboBox.getSelectedIndex());
+                p.sleep();
+                updateStatusLabel(p.toString());
+                waitButtons(1);
             }
         });
 
@@ -70,33 +86,23 @@ public class MainForm extends JFrame {
                 // Make sure the action event isn't triggered by the removeAllItems() call
                 if (petSelectorComboBox.getSelectedIndex() == -1) return;
 
+                // : Implement pet selection change
                 // 1. Grab the current pet from the petManager using petSelectorComboBox.getSelectedIndex()
-                Pet current = petManager.getPets().get(petSelectorComboBox.getSelectedIndex());
+                Pet p = petManager.getSelectedPet(petSelectorComboBox.getSelectedIndex());
                 // 2. Update statusLabel with the selected pet's status
-                statusLabel.setText(current.getStatus());
+                updateStatusLabel(p.toString());
                 // 3. Update imageLabel with the selected pet's image using setPetImage()
-                setPetImage(current.getImage());
+                setPetImage(p.getImage());
             }
         });
 
-        adoptFoxButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String name = JOptionPane.showInputDialog("Enter new pet name: ");
-                Fox meow = new Fox(name);
-                petManager.addPet(meow);
-                updateStatusLabel(meow.getStatus());
-                petSelectorComboBox.updateUI();
-            }
-        });
-
+        // : Implement adoption button actions
         adoptCatButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String name = JOptionPane.showInputDialog("Enter new pet name: ");
-                Cat meow = new Cat(name);
-                petManager.addPet(meow);
-                updateStatusLabel(meow.getStatus());
+                if (!name.trim().isEmpty()) petManager.addPet(new Cat(name));
+                updatePetList();
             }
         });
 
@@ -104,24 +110,35 @@ public class MainForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String name = JOptionPane.showInputDialog("Enter new pet name: ");
-                Dog meow = new Dog(name);
-                petManager.addPet(meow);
-                updateStatusLabel(meow.getStatus());
+                if (!name.trim().isEmpty()) petManager.addPet(new Dog(name));
+                updatePetList();
+            }
+        });
+
+        adoptFoxButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = JOptionPane.showInputDialog("Enter new pet name: ");
+                if (!name.trim().isEmpty()) petManager.addPet(new Fox(name));
+                updatePetList();
             }
         });
     }
 
     public void updateStatusLabel(String status) {
+        // : Update statusLabel with the provided status
         statusLabel.setText(status);
     }
 
     public void updatePetList() {
         petSelectorComboBox.removeAllItems();  // Clear existing items
-        for (Pet p : petManager.getPets()) {
-            petSelectorComboBox.addItem(p.getName());
+        // : Update petSelectorComboBox with pet names from petManager
+        ArrayList<Pet> list = petManager.getListPets();
+        for (int lcv = 0; lcv < petManager.getNumPets(); lcv++) {
+            petSelectorComboBox.addItem(list.get(lcv).getName());
         }
-        petSelectorComboBox.setSelectedIndex(petManager.getPets().size() - 1);
         // After adding the pet, set the selected index to the last item (petManager.getPets().size() - 1)
+        petSelectorComboBox.setSelectedIndex(petManager.getNumPets() - 1);
     }
 
     /* ========== DO NOT MODIFY BELOW ========== */
@@ -160,8 +177,7 @@ public class MainForm extends JFrame {
         }
     }
 
-    public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+    public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
