@@ -1,9 +1,4 @@
-package Quarter4.VirtualPetLab;
-
-import Quarter4.VirtualPetLab.Cat;
-import Quarter4.VirtualPetLab.Dog;
-import Quarter4.VirtualPetLab.Pet;
-import Quarter4.VirtualPetLab.PetManager;
+package Q4.VirtualPetLab;
 
 import javax.swing.*;
 import java.awt.*;

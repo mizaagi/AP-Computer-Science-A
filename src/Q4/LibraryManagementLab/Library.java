@@ -1,4 +1,4 @@
-package Q3.LibraryManagementLab;
+package Q4.LibraryManagementLab;
 
 import java.time.Instant;
 import java.time.ZoneOffset;
@@ -6,11 +6,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Library implements LibrarySystem {
+    private ArrayList<Book> titleBooks;
     private ArrayList<Book> books;
     private ArrayList<Patron> patrons;
     private ArrayList<Transaction> transactions;
 
-    // TODO: Implement the constructor
+    // TODO: Implement the constructor (DONE)
     public Library(ArrayList<Book> b, ArrayList<Patron> p, ArrayList<Transaction> t) {
         books = b;
         patrons = p;
@@ -31,6 +32,31 @@ public class Library implements LibrarySystem {
     }
 
     // TODO: Complete the implementation of LibrarySystem methods
+    public void addPatron(Patron p) {
+
+    }
+
+    public void removePatron(String patronId) {
+
+    }
+
+    public void createTransaction(String isbn, String patronId, String checkoutDate) {
+
+    }
+
+    public void updateTransaction(String isbn, String patronId, String returnDate) {
+
+    }
+
+    public boolean checkoutBook(String isbn, String patronId) {
+
+    }
+
+    public boolean checkinBook(String isbn, String patronId) {
+
+    }
+
+
     // TODO: Implement searchBookByTitle and searchBookByAuthor using binary search
 
     @Override
@@ -41,6 +67,10 @@ public class Library implements LibrarySystem {
     @Override
     public Book searchBookByTitle(String title) {
         // TODO: Binary search for book; if not found, return the closest book
+    }
+
+    public Book searchBookByAuthor(String author) {
+
     }
 
     // You might want to add some helper methods here like getBookByIsbn, getPatronById, etc.
