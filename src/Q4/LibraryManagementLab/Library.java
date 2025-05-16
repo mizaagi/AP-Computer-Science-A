@@ -33,23 +33,30 @@ public class Library implements LibrarySystem {
 
     // TODO: Complete the implementation of LibrarySystem methods
     public void addPatron(Patron p) {
-
+        patrons.add(p);
     }
 
     public void removePatron(String patronId) {
-
+        for (Patron p : patrons) {
+            if (p.getPatronId().equals(patronId)) patrons.remove(p);
+        }
     }
 
     public void createTransaction(String isbn, String patronId, String checkoutDate) {
-
+        Transaction t = new Transaction(isbn, patronId, checkoutDate);
+        transactions.add(t);
     }
 
     public void updateTransaction(String isbn, String patronId, String returnDate) {
+        for (Transaction t : transactions) {
+            if (t.getIsbn().equals(isbn) && t.getPatronId().equals(isbn)) {
 
+            }
+        }
     }
 
     public boolean checkoutBook(String isbn, String patronId) {
-
+        createTransaction(isbn, patronId, );
     }
 
     public boolean checkinBook(String isbn, String patronId) {
