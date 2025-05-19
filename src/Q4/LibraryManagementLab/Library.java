@@ -20,9 +20,17 @@ public class Library implements LibrarySystem {
 
     // Implement interface methods
     @Override
-    public void addBook(Book book) { /* Implementation; remember to add in sorted order */ }
+    public void addBook(Book book) {
+
+    }
     @Override
-    public void removeBook(String isbn) { /* Implementation */ }
+    public void removeBook(String isbn) {
+        for (int i = 0; i < books.size(); i++)
+            if (books.get(i).getIsbn().equals(isbn)) {
+                books.remove(i);
+                i--;
+            }
+    }
     // Other methods...
 
     @Override
@@ -32,17 +40,17 @@ public class Library implements LibrarySystem {
     }
 
     // TODO: Complete the implementation of LibrarySystem methods
-    public void addPatron(Patron p) {
+    public void addPatron(Patron p) { // DONE
         patrons.add(p);
     }
 
-    public void removePatron(String patronId) {
+    public void removePatron(String patronId) { // DONE!
         for (Patron p : patrons) {
             if (p.getPatronId().equals(patronId)) patrons.remove(p);
         }
     }
 
-    public void createTransaction(String isbn, String patronId, String checkoutDate) {
+    public void createTransaction(String isbn, String patronId, String checkoutDate) { // DONE
         Transaction t = new Transaction(isbn, patronId, checkoutDate);
         transactions.add(t);
     }
@@ -50,17 +58,27 @@ public class Library implements LibrarySystem {
     public void updateTransaction(String isbn, String patronId, String returnDate) {
         for (Transaction t : transactions) {
             if (t.getIsbn().equals(isbn) && t.getPatronId().equals(isbn)) {
-
+                t.setReturnDate(returnDate);
             }
         }
     }
 
     public boolean checkoutBook(String isbn, String patronId) {
-        createTransaction(isbn, patronId, );
+        createTransaction(isbn, patronId, getDateToday());
+        for (int lcv = 0; lcv < books.size(); lcv++)
+            if (books.get(lcv).getIsbn().equals(isbn)) {
+                books.get(lcv).setCheckedOut(true);
+            } else if (lcv == books.size() - 1) System.out.println("Can't find book!");
+        return true;
     }
 
     public boolean checkinBook(String isbn, String patronId) {
-
+        updateTransaction(isbn, patronId, getDateToday());
+        for (int lcv = 0; lcv < books.size(); lcv++)
+            if (books.get(lcv).getIsbn().equals(isbn)) {
+                books.get(lcv).setCheckedOut(false);
+            } else if (lcv == books.size() - 1) System.out.println("Can't find book!");
+        return true;
     }
 
 
